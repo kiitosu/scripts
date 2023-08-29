@@ -14,7 +14,9 @@ def search_s3_objects(bucket_name, search_keyword):
     for page in paginator.paginate(Bucket=bucket_name):
         for obj in page.get("Contents", []):
             if fnmatch.fnmatch(obj["Key"], search_keyword):
-                search_results.append(obj["Key"])
+                search_results.append({"Key":obj["Key"], "Size":obj["Size"]})
+
+    search_results.sort(key=lambda x: x["Size"])
 
     return search_results
 
