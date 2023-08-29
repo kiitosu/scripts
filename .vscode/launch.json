@@ -1,0 +1,24 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    // envの設定は aws-vault exec nilebank-proto-admin -- env | grep AWS_ で表示される値をコピペして使う
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Python: Current File",
+            "type": "python",
+            "request": "launch",
+            "program": "${file}",
+            "console": "integratedTerminal",
+            "justMyCode": true,
+            "args": ["nilebank-proto-s3-datalake", "*.tif"],
+            "env":{
+                "AWS_ACCESS_KEY_ID": "set value from aws-valult exec [profile name] -- env | grep AWS_",
+                "AWS_SECRET_ACCESS_KEY": "set value from aws-valult exec [profile name] -- env | grep AWS_",
+                "AWS_SESSION_TOKEN": "set value from aws-valult exec [profile name] -- env | grep AWS_",
+                "AWS_SECURITY_TOKEN": "set value from aws-valult exec [profile name] -- env | grep AWS_"
+            }
+        }
+    ]
+}
